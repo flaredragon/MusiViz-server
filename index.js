@@ -35,7 +35,7 @@ app.get('/login', function(req, res) {
       response_type: 'code',
       client_id: '35eda85300e54134835139325aa45236',
       scope: scope,
-      redirect_uri: 'http://localhost:4000/callback',
+      redirect_uri: 'https://stark-dawn-75160.herokuapp.com/callback',
       state: state
     }));
 });
@@ -61,7 +61,7 @@ app.get('/callback', function(req, res) {
       form: {
         code: code,
         grant_type: 'authorization_code',
-	redirect_uri: 'http://localhost:4000/callback'
+	redirect_uri: 'https://stark-dawn-75160.herokuapp.com/callback'
       },
       headers: {
         'Authorization': 'Basic ' + (Buffer.from('35eda85300e54134835139325aa45236' + ':' + 'f0765ce16a5343c98651476306b6e14f').toString('base64'))
@@ -108,7 +108,7 @@ app.get('/callback', function(req, res) {
 
 
 
-app.listen(4000, () => {
+app.listen(process.env.PORT|4000, () => {
   console.log('Listening');
 });
 
