@@ -64,7 +64,7 @@ app.get('/callback', function(req, res) {
 	redirect_uri: 'http://localhost:4000/callback'
       },
       headers: {
-        'Authorization': 'Basic ' + (Buffer.from('35eda85300e54134835139325aa45236' + ':' + 'a77aa2bb4de745d39f4f4d6f626e49b0').toString('base64'))
+        'Authorization': 'Basic ' + (Buffer.from('35eda85300e54134835139325aa45236' + ':' + 'f0765ce16a5343c98651476306b6e14f').toString('base64'))
       },
       json: true
     };
