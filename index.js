@@ -5,6 +5,8 @@ const express = require('express'),
       cors = require('cors'),
       querystring = require('querystring'),
       cookieParser = require('cookie-parser'),
+      client_id = require('./secrets').client_id,
+      client_secret = require('./secrets').client_secret,
       app = express();
 
 app.use(cors())
@@ -33,7 +35,7 @@ app.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
-      client_id: '35eda85300e54134835139325aa45236',
+      client_id: client_id,
       scope: scope,
       redirect_uri: 'https://stark-dawn-75160.herokuapp.com/callback',
       state: state
@@ -64,7 +66,7 @@ app.get('/callback', function(req, res) {
 	redirect_uri: 'https://stark-dawn-75160.herokuapp.com/callback'
       },
       headers: {
-        'Authorization': 'Basic ' + (Buffer.from('35eda85300e54134835139325aa45236' + ':' + 'f0765ce16a5343c98651476306b6e14f').toString('base64'))
+        'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64'))
       },
       json: true
     };
